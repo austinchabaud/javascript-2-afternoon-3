@@ -29,6 +29,14 @@
 
 // Code Here 
 
+function first(arr, callback) {
+  var result = []
+    for (let i = 0; i < arr.length; i++){
+    result.push(callback(arr[i]))
+  }
+  return result
+};
+
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
@@ -49,6 +57,14 @@ first(names, function(firstName){
 
 //Code Here
 
+function last(arr, callback){
+  var result = []
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i]))
+  }
+  return result
+}
+
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -66,6 +82,10 @@ last(names, function(lastName){
 */
 
 //Code Here
+
+function multiply(a, b, cb){
+  cb(a*b)
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -86,6 +106,14 @@ multiply(4, 3, function(answer){
 
 //Code Here 
 
+function contains(arr, name, cb){
+  if (arr.includes(name)){
+    cb(true);
+  } else{
+    cb(false);
+  }
+};
+
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -105,14 +133,18 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+//Code Here 
+
+function uniq (arr, cb){
+    var deDuplicated = arr.filter(function(cur, ind, arr){return arr.indexOf(cur) == ind});
+    cb(deDuplicated)
+  }
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
 // Do not edit the code above.
-
 
 
 ////////// PROBLEM 6 //////////
@@ -124,6 +156,12 @@ uniq(names, function(uniqArr){
 
 //Code Here 
 
+function each (arr, cb){
+  for(var i = 0; i < arr.length; i++){
+    cb(arr[i], i)
+  }
+  // arr.forEach((cur, i)=>cb(cur, i))
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -140,6 +178,14 @@ each(names, function(item, indice){
 */
 
 // Code here
+
+function getUserById (arr, id, cb){
+  for(var i = 0; i < arr.length; i++){
+    if (id === arr[i].id){
+      return cb(arr[i])
+    }
+  }
+}
 
 // Do not edit the code below.
 var users = [
